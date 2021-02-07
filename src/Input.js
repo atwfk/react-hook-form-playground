@@ -1,16 +1,17 @@
 import React from "react";
 
-const Input = ({ children, type, name, register }) => {
+const Input = ({ children, type, name, id, register, error, changed }) => {
   return (
     <>
-      <label htmlFor={name}>{children}</label>
       <input
         type={type}
+        id={id}
         name={name}
         placeholder={`Enter Your ${children}`}
-        ref={register({ required: true })}
+        ref={register}
+        onChange={changed}
       />
-      <p></p>
+      {error && <p>{error.message}</p>}
     </>
   );
 };
